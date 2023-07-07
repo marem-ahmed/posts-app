@@ -17,10 +17,18 @@
             <div class="bg-white login position-absolute">
                 <div class="d-flex logintex  ">
                     <h2 > Sign Up</h2>
-                    <input class=" inputup w-75 rounded-2 m-1 " type="text" placeholder="Name" id="name">
-                    <input class=" inputup w-75 rounded-2 m-1" type="email" placeholder="Email" id="email">
-                    <input class=" inputup w-75 rounded-2 m-1" type="text" placeholder="Roll" id="roll">
-                    <input class=" inputup w-75 rounded-2 m-1" type="password" placeholder="password" id="password">
+                    
+                    <input class=" inputup w-75 rounded-2 m-1 " type="text" placeholder="Name" name="name" id="name">
+                    <span></span>
+                    <input class=" inputup w-75 rounded-2 m-1" type="email" placeholder="Email" name="email" id="email">
+                    <span></span>
+                    <select class="inputup w-75 rounded-2 m-1" name="roll" id="roll">
+                        <option value="user">user</option>
+                        <option value="admin">admin</option>
+                    </select>
+                    <span></span>
+                    <input class=" inputup w-75 rounded-2 m-1" type="password" placeholder="password" name="password" id="password">
+                    <span></span>
                     <button type="submit" class="m-5 p-3 rounded-2 bg-danger text-white w-75 " id="btn"> SIGN IN</button>
 
                 </div>
@@ -32,3 +40,6 @@
             </div>
         </div>
     </div>
+</body>
+<script src="assets/js/main.js"></script>
+</html>
