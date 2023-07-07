@@ -1,0 +1,63 @@
+.image img {
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+.login {
+    width: 30%;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    
+}
+.logintex{
+    display: flex;
+    flex-direction: column;
+    margin-top: 9vh;
+    align-items: center;
+
+
+}
+.logintex h2{
+    font-size: 6vh;
+    font-weight: 600;
+    margin-bottom: 3vh;
+}
+.inputup{
+    padding: 2.5vh;
+}
+.end{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    
+    align-items: end;
+
+}
+@media screen and (min-width:350px) and (max-width:575px){
+    .image img{
+        display: none;
+    }
+    .login{
+        width: 100%;
+    }
+    
+}
+@media screen and (min-width:575px) and (max-width:767px) {
+   
+
+    .login {
+        width: 50%;
+    }
+
+}
+@media screen and (min-width:767px) and (max-width:995px) {
+
+
+    .login {
+        width: 40%;
+    }
+
+}
