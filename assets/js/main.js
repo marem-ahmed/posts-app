@@ -20,22 +20,6 @@ function signup() {
   let roll = document.getElementById('roll')
   let error = valid(inputs, regex)
   if (!error) {
-    if (localStorage.getItem('information')) {      
-        info.forEach((user) => {
-        if (email.value == user.email) {
-          email.nextElementSibling.textContent = 'asdasdasd'
-        } else {
-          let inf = {
-            name: Name.value,
-            email: email.value,
-            password: password.value,
-            roll: roll.value,
-          }
-          info.push(inf)
-          localStorage.setItem('information', JSON.stringify(info))
-        }
-      })
-    } else {
       let inf = {
         name: Name.value,
         email: email.value,
@@ -44,7 +28,7 @@ function signup() {
       }
       info.push(inf)
       localStorage.setItem('information', JSON.stringify(info))
-    }
+    
   }
 }
 
