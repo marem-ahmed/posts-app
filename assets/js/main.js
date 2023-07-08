@@ -23,7 +23,7 @@ function signup() {
     if (localStorage.getItem('information')) {      
         info.forEach((user) => {
         if (email.value == user.email) {
-          email.nextElementSibling.textContent = 'asdasdasd'
+          email.nextElementSibling.textContent = 'email already exist'
         } else {
           let inf = {
             name: Name.value,
@@ -35,18 +35,20 @@ function signup() {
           localStorage.setItem('information', JSON.stringify(info))
         }
       })
-    } else {
-      let inf = {
-        name: Name.value,
-        email: email.value,
-        password: password.value,
-        roll: roll.value,
+      } else { let inf = {
+          name: Name.value,
+          email: email.value,
+          password: password.value,
+          roll: roll.value,
       }
       info.push(inf)
       localStorage.setItem('information', JSON.stringify(info))
     }
+  }else{
+    window.alert("error")
   }
-}
+
+
 
 function valid(inputs, regex) {
   let error = false
@@ -64,4 +66,4 @@ function valid(inputs, regex) {
     }
   }
   return error
-}
+}}
