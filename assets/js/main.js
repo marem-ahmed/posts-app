@@ -32,6 +32,7 @@ function signup() {
   }
 }
 
+
 function valid(inputs, regex) {
   let error = false
 
