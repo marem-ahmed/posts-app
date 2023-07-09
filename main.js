@@ -10,17 +10,6 @@ if (localStorage.getItem('informations')) {
   info = JSON.parse(localStorage.getItem('informations'))
 }
 
-function searchdata(email) {
-  for (let i = 0; i <= info.length; i++) {
-    if (info[i].email === email.value) {
-
-      return true;
-    }
-
-    return false;
-
-  }
-}
 
 
 function signup() {
@@ -30,10 +19,7 @@ function signup() {
   let password = document.getElementById('password')
   let roll = document.getElementById('roll')
   let error = valid(inputs, regex)
-  if (!error ) {
-    if (!searchdata(email.value)){
-
-    
+  if (!error && searchdata) {
     let inf = {
       name: Name.value,
       email: email.value,
@@ -43,14 +29,21 @@ function signup() {
     info.push(inf)
     localStorage.setItem('informations', JSON.stringify(info))
 
-  }else{
-    alert("email is already registered")
   }
 
-  }
+
+}
+
+function searchdata(){
+  for(let i=0;i<=info.length;i++){
+  if(info[i].email==email.value){
+  alert("error")
+  return true
 }
 
 
+
+}}
 function valid(inputs, regex) {
   let error = false
 
@@ -68,6 +61,7 @@ function valid(inputs, regex) {
   }
   return error
 }
+
 
 
 
