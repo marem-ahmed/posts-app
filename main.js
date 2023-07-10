@@ -1,4 +1,5 @@
 let btn = document.getElementById('btn').addEventListener('click', signup)
+
 var info = []
 var regex = {
   name: /[a-z A-Z ]/,
@@ -61,10 +62,18 @@ function valid(inputs, regex) {
   }
   return error
 }
+let btn2=document.getElementById("btn2").addEventListener("click",login)
 
 
-
-
+function login(email,password){
+  for(let i=0;i<info.length;i++){
+    if (info[i].email == email.value && info[i].password == password.value){
+      alert("sucess")
+    }else{
+      alert('email or password is wrong')
+    }
+  }
+}
 
 
 
