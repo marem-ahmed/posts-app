@@ -1,57 +1,62 @@
-let btn = document.getElementById("btn").addEventListener("click",signup)
-
-var info = [];
+let btn = document.getElementById('btn').addEventListener('click', signup)
+var info = []
+if (localStorage.getItem('informations')) {
+  info = JSON.parse(localStorage.getItem('informations'))
+}else{info=[]}
+let Name = document.getElementById('name')
+let email = document.getElementById('email')
+let password = document.getElementById('password')
+let roll = document.getElementById('roll')
 var regex = {
   name: /[a-z A-Z ]/,
   email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
   password: /[a-zA-Z0-9]{6,22}/,
   roll: /(admin|user)/,
 }
-if (localStorage.getItem('informations')) {
-  info = JSON.parse(localStorage.getItem('informations'))
-}
+
 
 function searchdata(email) {
-  for (let i = 0; i <= info.length; i++) {
-    if (info[i].email === email.value) {
+  let error=false;
+  info.forEach((data) => {
+    if (data.email == email) {
+      console.log(data,true);
+      error=true;
 
-      return true;
     }
-
-
-  }
-  return false;
-
+  })
+  return error;
 }
-
 
 function signup() {
-  let inputs = document.querySelectorAll('.inputup');
-  let Name = document.getElementById('name');
-  let email = document.getElementById('email');
-  let password = document.getElementById('password');
-  let roll = document.getElementById('roll');
+  let inputs = document.querySelectorAll('.inputup')
+
   let error = valid(inputs, regex)
-  if (!error ) {
-    if (!searchdata(email.value)){
-
-    
-    let inf = {
-      name: Name.value,
-      email: email.value,
-      password: password.value,
-      roll: roll.value,
+  if (!error) {
+    if (!localStorage.getItem('informations')) {
+      let inf = {
+        name: Name.value,
+        email: email.value,
+        password: password.value,
+        roll: roll.value,
+      }
+      info.push(inf)
+      localStorage.setItem('informations', JSON.stringify(info))
+    } else {
+      if (!searchdata(email.value)) {
+        let inf = {
+          name: Name.value,
+          email: email.value,
+          password: password.value,
+          roll: roll.value,
+        }
+        info.push(inf)
+        localStorage.setItem('informations', JSON.stringify(info))
+      } else {
+        alert('email is already registered')
+      }
     }
-    info.push(inf)
-    localStorage.setItem('informations', JSON.stringify(info))
-
-  }else{
-    alert("email is already registered")
-  }
-
   }
 }
-
 
 function valid(inputs, regex) {
   let error = false
@@ -86,6 +91,7 @@ function login(email, password) {
   }
 }
   
+
 
 
 
