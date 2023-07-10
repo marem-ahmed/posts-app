@@ -2,7 +2,9 @@ let btn = document.getElementById('btn').addEventListener('click', signup)
 var info = []
 if (localStorage.getItem('informations')) {
   info = JSON.parse(localStorage.getItem('informations'))
-}else{info=[]}
+} else {
+  info = []
+}
 let Name = document.getElementById('name')
 let email = document.getElementById('email')
 let password = document.getElementById('password')
@@ -14,17 +16,15 @@ var regex = {
   roll: /(admin|user)/,
 }
 
-
 function searchdata(email) {
-  let error=false;
+  let error = false
   info.forEach((data) => {
     if (data.email == email) {
-      console.log(data,true);
-      error=true;
-
+      console.log(data, true)
+      error = true
     }
   })
-  return error;
+  return error
 }
 
 function signup() {
@@ -75,25 +75,6 @@ function valid(inputs, regex) {
   }
   return error
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
