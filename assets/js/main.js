@@ -1,4 +1,7 @@
-let btn = document.getElementById('btn').addEventListener('click', signup)
+let btn = document.getElementById('btn')
+if(btn){
+  btn.addEventListener('click', signup)
+}
 var info = []
 if (localStorage.getItem('informations')) {
   info = JSON.parse(localStorage.getItem('informations'))
@@ -78,19 +81,39 @@ function valid(inputs, regex) {
 
 
 
-var btn2 = document.getElementById("btn2").addEventListener("click", login)
+var btn2 = document.getElementById("btn2");
+if(btn2){
+  btn2.addEventListener("click", login);
+}
 
-function login(email, password) {
+function login() {
+  let inputs=document.querySelectorAll(".inputin")
+  
+  let error=valid(inputs,regex)
+  if(error){
+
+  }else{
   for (let i = 0; i < info.length; i++) {
+    let sucess=false
     if (info[i].email == email.valid && info[i].password == password.value) {
-      alert("sucess")
+      sucess=true;
     }
-    else {
-      alert("email or password not valid")
-    }
+    
+  }
+  checkLogin()
+    return sucess
+
   }
 }
-  
+  function checkLogin(){
+    let checkLogin=login()
+    if (checkLogin){
+      alert("sucess")
+    }else{
+      alert("failed")
+    }
+
+  }
 
 
 
