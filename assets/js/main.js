@@ -18,6 +18,11 @@ var regex = {
   password: /[a-zA-Z0-9]{6,22}/,
   roll: /(admin|user)/,
 }
+var regex2 = {
+  email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+  password: /[a-zA-Z0-9]{6,22}/,
+  
+}
 
 function searchdata(email) {
   let error = false
@@ -61,7 +66,7 @@ function signup() {
   }
 }
 
-function valid(inputs, regex) {
+function valid(inputs,regex) {
   let error = false
 
   for (let i = 0; i < inputs.length; i++) {
@@ -88,40 +93,25 @@ if(btn2){
 
 function login() {
   let inputs=document.querySelectorAll(".inputin")
-  
-  let error=valid(inputs,regex)
-  if(error){
-
+  email=document.getElementById("loginEmail");
+  pass=document.getElementById("loginPass");
+  let error=valid(inputs,regex2)
+  let success=false
+  if(!error){
+     for (let i = 0; i < info.length; i++) {
+       if (info[i].email == email.value && info[i].password == pass.value) {
+         success=true;
+        }
+        
+      }
+    }
+  if (success){
+    localStorage.setItem('success',)
   }else{
-  for (let i = 0; i < info.length; i++) {
-    let sucess=false
-    if (info[i].email == email.valid && info[i].password == password.value) {
-      sucess=true;
-    }
-    
+    alert("failed")
   }
-  checkLogin()
-    return sucess
-
-  }
+return success
 }
-  function checkLogin(){
-    let checkLogin=login()
-    if (checkLogin){
-      alert("sucess")
-    }else{
-      alert("failed")
-    }
-
-  }
-
-
-
-
-
-
-
-
 
 
 
