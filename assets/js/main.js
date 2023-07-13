@@ -1,14 +1,35 @@
+if (window.location.pathname== "/dash.html") {
+  let data = JSON.parse(localStorage.getItem('login'));
+  if (data.roll == 'user') {
+    window.location.replace("index.html");
+
+  }
+}
+
+
+if(localStorage.getItem('login')){
+
+ let data = JSON.parse(localStorage.getItem('login'));
+  if (data.roll == 'user') {
+    let dash = document.getElementById('dash')
+    if (dash) {
+      dash.style.display = 'none'
+    }
+  }
+}
 
 let btn = document.getElementById('btn');
-let mood='add';
+let mood = 'add';
 let fix;
-if(btn){
-  btn.addEventListener('click', signup)
+if (btn) {
+  btn.addEventListener('click', signup);
 }
 var info = []
 if (localStorage.getItem('informations')) {
   info = JSON.parse(localStorage.getItem('informations'))
-}else{info=[]}
+} else {
+  info = []
+}
 let Name = document.getElementById('name')
 let email = document.getElementById('email')
 let password = document.getElementById('password')
@@ -20,17 +41,15 @@ var regex = {
   roll: /(admin|user)/,
 }
 
-
 function searchdata(email) {
-  let error=false;
+  let error = false
   info.forEach((data) => {
     if (data.email == email) {
-      console.log(data,true);
-      error=true;
-
+      console.log(data, true)
+      error = true
     }
   })
-  return error;
+  return error
 }
 
 function signup() {
@@ -46,6 +65,12 @@ function signup() {
         roll: roll.value,
       }
       info.push(inf)
+      let data={
+        email: email.value,
+        roll: roll.value
+      }
+      localStorage.setItem('login',JSON.stringify(data) )
+      window.location.replace("index.html");
       localStorage.setItem('informations', JSON.stringify(info))
     } else {
       if (!searchdata(email.value)) {
@@ -56,6 +81,12 @@ function signup() {
           roll: roll.value,
         }
         info.push(inf)
+        let data={
+          email: email.value,
+          roll: roll.value
+        }
+        localStorage.setItem('login',JSON.stringify(data) )
+        window.location.replace("index.html");
         localStorage.setItem('informations', JSON.stringify(info))
       } else {
         alert('email is already registered')
@@ -79,114 +110,99 @@ function valid(inputs, regex) {
       input.nextElementSibling.textContent = ''
     }
   }
-  return error;
+  return error
 }
 
-
-
-var btn2 = document.getElementById("btn2");
-if(btn2){
-  btn2.addEventListener("click", login);
+var btn2 = document.getElementById('btn2')
+if (btn2) {
+  btn2.addEventListener('click', login)
 }
 
 function login() {
-  let inputs=document.querySelectorAll(".inputin")
-  
-  
-  let error=valid(inputs,regex)
-  if(!error){
 
-  }else{
-  for (let i = 0; i < info.length; i++) {
-    let sucess=false
-    if (info[i].email == email.valid && info[i].password == password.value&&info[i].roll==value.roll) {
-      sucess=true;
+  let inputs = document.querySelectorAll('.inputin')
+let email = document.getElementById('logEmail')
+let password = document.getElementById('logPassword')
+let roll = document.getElementById('logroll')
+  let error = valid(inputs, regex)
+  let success = false
+  if (!error) {
+    for (let i = 0; i < info.length; i++) {
+      if ( info[i].email == email.value && info[i].password == password.value && info[i].roll == roll.value) {
+        success = true
+      }
     }
-    
-  }
-  checkLogin()
-  checkroll()
-    return sucess
 
-  }
+    if (success) {
+      let data={
+        email: email.value,
+        roll: roll.value
+      }
+      localStorage.setItem('login',JSON.stringify(data))
+      window.location.replace("index.html");
+
+    } else {
+      alert('failed')
+    }
+    return success
+  } 
 }
-  function checkLogin(){
-    let checkLogin=login()
-    if (checkLogin){
-      alert("sucess")
-    }else{
-      alert("failed")
-    }
 
-  }
-let data = [];
 
-if (localStorage.getItem("sData") != null) {
-  data = localStorage.getItem("sData");
-} 
+let data = []
+
+if (localStorage.getItem('sData') != null) {
+  data = localStorage.getItem('sData')
+}
 function savadata() {
-
-
-
   let savedData = {
     Email: Email.value,
     Password: Password.value,
-    Roll: roll.value
+    Roll: roll.value,
   }
-  data.push(savedData);
-  localStorage.setItem("sData", JSON.stringify(data))
+  data.push(savedData)
+  localStorage.setItem('sData', JSON.stringify(data))
 }
 
 
-function checkroll() {
-
-  if (roll.value == 'user') {
-    let dash = document.getElementById("dash");
-    dash.style.display = "none";
-  }
+let btn3 = document.getElementById('btn3')
+let Inputs = document.querySelectorAll('.inputs')
+let Title = document.getElementById('title')
+let Content = document.getElementById('content')
+if (btn3) {
+  btn3.addEventListener('click', addPost)
 }
- let btn3=document.getElementById("btn3");
- let Inputs=document.querySelectorAll('.inputs');
- let Title=document.getElementById("title");
-let Content = document.getElementById("content");
-if(btn3){
-  btn3.addEventListener("click",addPost);
-}
-let posts = [];
-if(localStorage.getItem("post")!=null){
-  posts=JSON.parse(localStorage.getItem("post"));
+let posts = []
+if (localStorage.getItem('post') != null) {
+  posts = JSON.parse(localStorage.getItem('post'))
   display()
 }
-function addPost(e){
+function addPost(e) {
   e.preventDefault()
 
-let dataPost={
-Title:Title.value,
-Content:Content.value
-}
-posts.push(dataPost);
-localStorage.setItem("post",JSON.stringify(posts));
-display()
-clear()
-
-
+  let dataPost = {
+    Title: Title.value,
+    Content: Content.value,
+  }
+  posts.push(dataPost)
+  localStorage.setItem('post', JSON.stringify(posts))
+  display()
+  clear()
 }
 
-function clear(){
-  Title.value=" "
-  Content.value=" "
+function clear() {
+  Title.value = ' '
+  Content.value = ' '
 }
 
-function display(){
-  let cartona=``;
-  let conter=``;
-  for(let i=0;i<posts.length;i++){
-   
-
+function display() {
+  let cartona = ``
+  let conter = ``
+  for (let i = 0; i < posts.length; i++) {
     conter += `<div>
             <img class="w-50" src="assets/post.webp">
             <div >
-            <h2>${posts[i].Titleitle}</h2>
+            <h2>${posts[i].Title}</h2>
             <p>${posts[i].Content}</p>
             </div>
         </div>`
@@ -203,35 +219,32 @@ function display(){
   `
   }
   // document.getElementById("container").innerHTML = conter
-  document.getElementById("ttbody").innerHTML = cartona
-
+  if (document.getElementById('container')) {
+    document.getElementById('container').innerHTML = conter
+  }
+  if (document.getElementById('ttbody')) {
+    document.getElementById('ttbody').innerHTML = cartona
+  }
 }
 
-function Delete(i){
+function Delete(i) {
+  posts.splice(i, 1)
+  localStorage.setItem('post', JSON.stringify(posts))
+  display()
+}
+let btn4 = document.getElementById('btn4')
 
-
-    posts.splice(i, 1)
-    localStorage.setItem("post", JSON.stringify(posts))
-    display();
-  }
-  let btn4=document.getElementById("btn4");
-
-  if(btn4){
-btn4.addEventListener("click",edit)
-
-  }
-  function upDate(i){
-    fix=i;
-    Title.value=posts[fix].Title;
-    Content.value = posts[fix].Content;
-    btn3.style.display='none'
-    btn4.style.display='flex'
-
-  }
-  function edit(){
-    posts[fix].Title=Title.value;
-    posts[fix].Content =Content.value;
-
-  }
-  
-  
+if (btn4) {
+  btn4.addEventListener('click', edit)
+}
+function upDate(i) {
+  fix = i
+  Title.value = posts[fix].Title
+  Content.value = posts[fix].Content
+  btn3.style.display = 'none'
+  btn4.style.display = 'flex'
+}
+function edit() {
+  posts[fix].Title = Title.value
+  posts[fix].Content = Content.value
+}
