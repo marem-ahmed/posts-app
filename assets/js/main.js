@@ -1,4 +1,7 @@
-let btn = document.getElementById('btn')
+
+let btn = document.getElementById('btn');
+let mood='add';
+let fix;
 if(btn){
   btn.addEventListener('click', signup)
 }
@@ -89,18 +92,20 @@ if(btn2){
 function login() {
   let inputs=document.querySelectorAll(".inputin")
   
+  
   let error=valid(inputs,regex)
-  if(error){
+  if(!error){
 
   }else{
   for (let i = 0; i < info.length; i++) {
     let sucess=false
-    if (info[i].email == email.valid && info[i].password == password.value) {
+    if (info[i].email == email.valid && info[i].password == password.value&&info[i].roll==value.roll) {
       sucess=true;
     }
     
   }
   checkLogin()
+  checkroll()
     return sucess
 
   }
@@ -114,29 +119,119 @@ function login() {
     }
 
   }
+let data = [];
+
+if (localStorage.getItem("sData") != null) {
+  data = localStorage.getItem("sData");
+} 
+function savadata() {
 
 
 
+  let savedData = {
+    Email: Email.value,
+    Password: Password.value,
+    Roll: roll.value
+  }
+  data.push(savedData);
+  localStorage.setItem("sData", JSON.stringify(data))
+}
 
 
+function checkroll() {
+
+  if (roll.value == 'user') {
+    let dash = document.getElementById("dash");
+    dash.style.display = "none";
+  }
+}
+ let btn3=document.getElementById("btn3");
+ let Inputs=document.querySelectorAll('.inputs');
+ let Title=document.getElementById("title");
+let Content = document.getElementById("content");
+if(btn3){
+  btn3.addEventListener("click",addPost);
+}
+let posts = [];
+if(localStorage.getItem("post")!=null){
+  posts=JSON.parse(localStorage.getItem("post"));
+  display()
+}
+function addPost(e){
+  e.preventDefault()
+
+let dataPost={
+Title:Title.value,
+Content:Content.value
+}
+posts.push(dataPost);
+localStorage.setItem("post",JSON.stringify(posts));
+display()
+clear()
 
 
+}
+
+function clear(){
+  Title.value=" "
+  Content.value=" "
+}
+
+function display(){
+  let cartona=``;
+  let conter=``;
+  for(let i=0;i<posts.length;i++){
+   
+
+    conter += `<div>
+            <img class="w-50" src="assets/post.webp">
+            <div >
+            <h2>${posts[i].Titleitle}</h2>
+            <p>${posts[i].Content}</p>
+            </div>
+        </div>`
+    cartona += `  <tr>
+    <td>${i} </td>
+    <td>${posts[i].Title}</td>
+    <td>${posts[i].Content}</td>
+    <td><button class="bg-warning border-0 text-white rounded-1"onclick="upDate(${i})" >Update</button></td>
+    <td><button class="bg-danger border-0 text-white rounded-1" onclick="Delete(${i})">delete</button></td>
+  </tr>
+   
+   
+   
+  `
+  }
+  // document.getElementById("container").innerHTML = conter
+  document.getElementById("ttbody").innerHTML = cartona
+
+}
+
+function Delete(i){
 
 
+    posts.splice(i, 1)
+    localStorage.setItem("post", JSON.stringify(posts))
+    display();
+  }
+  let btn4=document.getElementById("btn4");
 
+  if(btn4){
+btn4.addEventListener("click",edit)
 
+  }
+  function upDate(i){
+    fix=i;
+    Title.value=posts[fix].Title;
+    Content.value = posts[fix].Content;
+    btn3.style.display='none'
+    btn4.style.display='flex'
 
+  }
+  function edit(){
+    posts[fix].Title=Title.value;
+    posts[fix].Content =Content.value;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  }
+  
+  

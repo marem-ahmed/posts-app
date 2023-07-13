@@ -4,79 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+    
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="dash.css">
-    <link rel="stylesheet" href="assets/css/navBar.css">
 </head>
 <body>
     <div>
-    <nav>
-       <div class="lefside">
-        <h1 class="m-3">Bjarki</h1>
-        <a href="#"> Home</a>
-        <a href="#">dash</a>
-       </div> 
-       <div>
-       <a href="#">Sign up</a>
-       <a href="#">sign in</a>
+    <h1 class="text-center " >Add Post</h1>
+    <div class="m-auto w-75 " >
+    <label for="title"> Title:</label>
+    <input class="form-control  p-2 m-2 inputs" type="text" name="title" id="title">
+    <label for="content"> Content:</label>
+    <textarea class="form-control p-5 m-2 inputs" name="content" id="content" ></textarea>
+    <button class="p-2 w-25 m-2 bg-danger text-white border-0 rounded-1" id="btn3"> add</button>
+    <button class="p-2 w-25 m-2 bg-danger text-center text-white border-0 rounded-1  " id="btn4"> Update</button>
 
-       </div>
-    </nav>
     </div>
-    <div class="container ">
-    <div class="row">
-   <div class="col-md-4">
-    <div>
-        <img class="w-50" src="assets/post.webp"  >
-        <h3>Lorem, ipsum.</h3>
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
     </div>
     <div>
-        <img class="w-50" src="assets/post.webp">
-        <h3>Lorem, ipsum.</h3>
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
+        <table class="table w-75 m-auto">
+<thead>
+    <tr>
+        <td>ID</td>
+        <td>Title</td>
+        <td>Content</td>
+        <td>Update</td>
+        <td>Delete</td>
+    </tr>
+</thead>
+<tbody id="ttbody">
+
+</tbody>
+
+
+        </table>
     </div>
-    <div>
-        <img class="w-50" src="assets/post.webp">
-        <h3>Lorem, ipsum.</h3>
-        <p>Lorem ipsum dolor sit amet consectetur.</p>
-    </div>
-   </div>
-
-
-  
-    </div>
-
-<div class="row">
-    <div class="col-md-4">
-       
-        <div>
-            <img class="w-50" src="assets/post.webp">
-            <div>
-            <h3>Lorem, ipsum.</h3>
-            <p>Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
-        </div>
-        <div>
-            <img class="w-50" src="assets/post.webp">
-            <div>
-                <h3>Lorem, ipsum.</h3>
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
-        </div>
-        <div>
-            <img class="w-50" src="assets/post.webp">
-            <div>
-                <h3>Lorem, ipsum.</h3>
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
-        </div>
-    </div>
-
-
-
-</div>
-
-    </div>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
