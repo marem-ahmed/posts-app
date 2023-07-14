@@ -1,10 +1,4 @@
-if (window.location.pathname== "/dash.html") {
-  let data = JSON.parse(localStorage.getItem('login'));
-  if (data.roll == 'user') {
-    window.location.replace("index.html");
 
-  }
-}
 
 
 if(localStorage.getItem('login')){
@@ -180,7 +174,7 @@ function display() {
   let cartona = ``
   let conter = ``
   for (let i = 0; i < posts.length; i++) {
-    conter += `<div>
+    conter += `<div class="w-25">
             <img class="w-50" src="assets/post.webp">
             <div >
             <h2>${posts[i].Title}</h2>
@@ -199,7 +193,6 @@ function display() {
    
   `
   }
-  // document.getElementById("container").innerHTML = conter
   if (document.getElementById('container')) {
     document.getElementById('container').innerHTML = conter
   }
