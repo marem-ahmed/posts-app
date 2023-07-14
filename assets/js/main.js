@@ -45,7 +45,6 @@ function searchdata(email) {
   let error = false
   info.forEach((data) => {
     if (data.email == email) {
-      console.log(data, true)
       error = true
     }
   })
@@ -147,24 +146,6 @@ let roll = document.getElementById('logroll')
     return success
   } 
 }
-
-
-let data = []
-
-if (localStorage.getItem('sData') != null) {
-  data = localStorage.getItem('sData')
-}
-function savadata() {
-  let savedData = {
-    Email: Email.value,
-    Password: Password.value,
-    Roll: roll.value,
-  }
-  data.push(savedData)
-  localStorage.setItem('sData', JSON.stringify(data))
-}
-
-
 let btn3 = document.getElementById('btn3')
 let Inputs = document.querySelectorAll('.inputs')
 let Title = document.getElementById('title')
@@ -238,6 +219,7 @@ if (btn4) {
   btn4.addEventListener('click', edit)
 }
 function upDate(i) {
+
   fix = i
   Title.value = posts[fix].Title
   Content.value = posts[fix].Content
@@ -247,4 +229,6 @@ function upDate(i) {
 function edit() {
   posts[fix].Title = Title.value
   posts[fix].Content = Content.value
+  localStorage.setItem('post', JSON.stringify(posts))
+  display()
 }
