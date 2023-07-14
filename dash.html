@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/dash.css">
+</head>
+<body>
+    <div>
+    <h1 class="text-center " >Add Post</h1>
+    <div class="m-auto w-75 " >
+    <label for="title"> Title:</label>
+    <input class="form-control  p-2 m-2 inputs" type="text" name="title" id="title">
+    <label for="content"> Content:</label>
+    <textarea class="message form-control  m-2 inputs" name="content" id="content" ></textarea>
+    <button class="p-2 w-25 m-2 bg-danger text-white border-0 rounded-1" id="btn3"> add</button>
+    <button class="btn4 p-2 w-25 m-2 bg-danger text-center text-white border-0  rounded-1  " id="btn4"> Update</button>
+
+    </div>
+    </div>
+    <div>
+        <table class="table w-75 m-auto">
+<thead>
+    <tr>
+        <td>ID</td>
+        <td>Title</td>
+        <td>Content</td>
+        <td>Update</td>
+        <td>Delete</td>
+    </tr>
+</thead>
+<tbody id="ttbody">
+
+</tbody>
+
+
+        </table>
+    </div>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

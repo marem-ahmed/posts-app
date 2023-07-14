@@ -1,0 +1,9 @@
+.acontainer{
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    margin: auto;
+    margin-top: 10vh;
+    flex-wrap: wrap;
+    
+}
