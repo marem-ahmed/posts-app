@@ -174,13 +174,14 @@ function display() {
   let cartona = ``
   let conter = ``
   for (let i = 0; i < posts.length; i++) {
-    conter += `<div class="w-25">
-            <img class="w-50" src="assets/post.webp">
-            <div >
+    conter += `<div class="card m-4" style = "width: 18rem;" >
+          <img class="card-img-top" src = "assets/post.webp" alt="Card image cap">
+          <div class="card-body">
             <h2>${posts[i].Title}</h2>
-            <p>${posts[i].Content}</p>
+            <p class="card-text">${posts[i].Content}</p>
             </div>
         </div>`
+              
     cartona += `  <tr>
     <td>${i} </td>
     <td>${posts[i].Title}</td>
@@ -224,4 +225,10 @@ function edit() {
   posts[fix].Content = Content.value
   localStorage.setItem('post', JSON.stringify(posts))
   display()
+}
+let icon=document.getElementById("icon");
+if(icon){
+  icon.addEventListener("click",()=>{
+    document.getElementById("menu").classList.toggle("active")
+  })
 }
